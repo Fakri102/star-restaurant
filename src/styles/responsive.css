@@ -1,0 +1,90 @@
+@media screen and (max-width: 1150px) {
+    .restaurant-list, .favorite-restaurant-list {
+        grid-template-columns: 1fr 1fr; 
+    }
+    .card{
+        max-width: 90% ;
+        height: 500px;
+    }
+  
+}
+
+@media screen and (max-width: 650px) {
+    .restaurant-list, .favorite-restaurant-list  {
+        grid-template-columns: 1fr; 
+    }
+    .card{
+        max-width: 70% ; 
+    }
+    .jumbotron {
+        background: url('./images/hero-image_4-medium.jpg') repeat center center;
+    }
+}
+
+@media screen and (max-width: 620px) {
+    .app-name {    
+        width: 40%;
+     }
+     
+     .navbar-list {
+        width: 60%;
+     }
+}
+
+@media screen and (max-width: 475px) {
+    .navbar-list {
+        display: none; 
+    }
+
+    #drawer {
+        display: inline-block;
+      }
+    
+    .navbar-mobile{
+        display: inline;
+    }
+
+    .app-name{
+        width: 100%;
+        text-align: center;
+    }
+
+    .navbar{
+        display: block;
+    }
+
+    .jumbotron {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+        background: url('./images/hero-image_4-small.jpg') repeat center center;
+    }
+
+    .card{
+        max-width: 90% ;
+    }
+
+    .card .info .city {
+        padding-left: 1rem;
+        margin-top: 5px;
+        
+    }
+
+    .card .info .rating {
+        padding-top: 0;
+        padding-right: 1rem;
+    }
+    
+    .card .body {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .restaurant-detail{
+        padding-left: 1em;
+        padding-right: 1em;
+    }
+
+    .detail-container .review-container .review-item{
+        padding: 10px;   
+    }
+}
