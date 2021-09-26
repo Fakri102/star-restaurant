@@ -22,11 +22,9 @@ const PostReview = async (url, name, review) => {
       </div>
   `;
 
-  console.log(dataInput);
   // POST review
   const reviewResponse = await RestaurantListSource.postRestaurantReview(dataInput);
   console.log(reviewResponse);
-
   if (dataInput.name !== '' && dataInput.review !== '') {
     reviewContainer.innerHTML += newReview;
   }
