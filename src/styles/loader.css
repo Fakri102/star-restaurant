@@ -1,0 +1,27 @@
+#loading {
+    display: flex;
+    width: 100%;    
+    align-items: center;
+}
+
+.loader {
+  border: 16px solid white;
+  border-radius: 50%;
+  border-top: 16px solid #8675A9;
+  width: 160px;
+  height: 160px;
+  margin: auto;
+  -webkit-animation: spin 2s linear infinite; 
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

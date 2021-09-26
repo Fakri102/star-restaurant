@@ -2,16 +2,16 @@ import CONFIG from '../../globals/config';
 
 const createRestaurantItemTemplate = (restaurant) => `
 <div class="card">
-<img class="lazyload" data-src="${CONFIG.BASE_IMAGE_URL_SMALL + restaurant.pictureId}" alt="${restaurant.name} image">
+<img class="lazyload" data-src="${CONFIG.BASE_IMAGE_URL_MEDIUM + restaurant.pictureId}" alt="${restaurant.name} image">
   <div class="info">
      <p class="city"><a href="#">${restaurant.city}</a></p>
-     <p class="rating"> Rating: ${restaurant.rating}</p> 
+     <p class="rating"><i class="fa fa-star">    ${restaurant.rating}</i></p> 
   </div>
   <div class="title">
      <h3><a href="${`/#/detail/${restaurant.id}`}">${restaurant.name}</a></h3>
   </div>
   <div class="body">
-     <p>${restaurant.description}</p>
+     <p class="description">${restaurant.description}</p>
  </div>
 </div>
   `;
@@ -19,11 +19,7 @@ const createRestaurantItemTemplate = (restaurant) => `
 const createListCategoriesTemplate = (restaurant) => {
   let listCategories = '';
   restaurant.categories.forEach((category) => {
-    if (restaurant.categories.indexOf(category) === restaurant.categories.length - 1) {
-      listCategories += `${category.name}`;
-    } else {
-      listCategories += `${category.name}, `;
-    }
+    listCategories += `<a href="#">${category.name}</a>`;
   });
   return listCategories;
 };
@@ -31,7 +27,7 @@ const createListCategoriesTemplate = (restaurant) => {
 const createListFoodsTemplate = (restaurant) => {
   let listFoods = '';
   restaurant.menus.foods.forEach((food) => {
-    listFoods += `<p class = "foods">${food.name}</p>`;
+    listFoods += `<li class = "food-item">${food.name}</li>`;
   });
   return listFoods;
 };
@@ -39,7 +35,7 @@ const createListFoodsTemplate = (restaurant) => {
 const createListDinksTemplate = (restaurant) => {
   let listDrinks = '';
   restaurant.menus.drinks.forEach((drink) => {
-    listDrinks += `<p class = "drinks">${drink.name}</p>`;
+    listDrinks += `<li class = "drink-item">${drink.name}</li>`;
   });
   return listDrinks;
 };
@@ -54,6 +50,7 @@ const createListUserReviewTemplate = (restaurant) => {
       <p>${customerReview.date}</p>
       </div>`;
   });
+  console.log(listCustomerReview);
   return listCustomerReview;
 };
 
@@ -65,22 +62,26 @@ const createRestaurantDetailTemplate = (restaurant) => `
    <div class="info-container">
       <div class="head">
          <p class="city"><a href="#">${restaurant.city}</a></p>
-         <p class="rating"> Rating: ${restaurant.rating}</p> 
+         <p class="rating"><i class="fa fa-star">    ${restaurant.rating}</i></p> 
       </div>
       <h3>${restaurant.name}</h3>
       <p class="address"> Address : ${restaurant.address}</p> 
-      <p class="categories"> Categories : ${createListCategoriesTemplate(restaurant)}</p> 
       <p class="description"> Description: ${restaurant.description}</p> 
+      <p class="categories">Categories : ${createListCategoriesTemplate(restaurant)}</p>
    </div>
    <h3 class="menu-title">Menu</h3>
    <div class = "menus-container">
          <div class="foods"> 
-         <h3>Foods</h3>     
+         <h3>Foods</h3>    
+          <ol class="list"> 
             ${createListFoodsTemplate(restaurant)}
+          </ul>
          </div>
          <div class="drinks">    
-         <h3>Drinks</h3>    
+         <h3>Drinks</h3>   
+          <ol class="list">  
             ${createListDinksTemplate(restaurant)}
+          </ul>
          </div>
    </div>
    <h3 class="review-title">Users Review</h3>  
@@ -88,6 +89,18 @@ const createRestaurantDetailTemplate = (restaurant) => `
    ${createListUserReviewTemplate(restaurant)}
    </div>
 </div>
+
+<div class="card-addReview">
+    <h2>Add Review</h2>
+    <div class="body">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required/>
+      <label for="review">Review</label>
+      <textarea id="review" name="review" rows="3" required></textarea>
+      <button id="submit-addReview" type="submit"> Add Review </button>
+    </div>
+</div>
+
 `;
 
 const createLikeRestaurantButtonTemplate = () => `
