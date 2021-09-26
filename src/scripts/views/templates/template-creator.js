@@ -50,7 +50,6 @@ const createListUserReviewTemplate = (restaurant) => {
       <p>${customerReview.date}</p>
       </div>`;
   });
-  console.log(listCustomerReview);
   return listCustomerReview;
 };
 
